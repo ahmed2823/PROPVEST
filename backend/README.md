@@ -33,3 +33,9 @@ For web development on a different origin, add that origin to `CORS_ORIGIN` in `
 Successful sign-in and sign-up responses include a seven-day bearer token and the user's public profile. Authentication requests are rate limited.
 
 Run backend validation tests with `npm run server:test`.
+
+## Deploy on Render
+
+The repository includes a Render Blueprint in `render.yaml`. In Render, create a new Blueprint and select this GitHub repository. Set the Blueprint's `MONGODB_URI` environment variable to your MongoDB Atlas connection string; Render generates `JWT_SECRET`. The service builds and runs the backend from `backend/` and checks `/api/health`.
+
+Do not commit either secret. A MongoDB Atlas `0.0.0.0/0` access-list entry allows connections from any IP; use a dedicated database user with only the required database permissions and a strong password. Restrict network access to Render's outbound IP ranges when your Render plan provides stable egress addresses.
