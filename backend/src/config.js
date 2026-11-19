@@ -11,7 +11,7 @@ export function getConfig(env = process.env) {
 
   return {
     port,
-    mongoUri: env.MONGODB_URI ?? 'mongodb://127.0.0.1:27017/propvest',
+    mongoUri: env.MONGODB_URI,
     jwtSecret,
     corsOrigins: (env.CORS_ORIGIN ?? 'http://localhost:8081,http://localhost:19006')
       .split(',')
